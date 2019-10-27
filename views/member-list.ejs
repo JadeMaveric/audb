@@ -8,16 +8,20 @@
 </head>
 <body>
     <main>
-        <%if(members.length > 0) {%>
-        <ul><%for(let member of members){%>
+        <ul>
+            <%if(members.length > 0) {%>
+            <%for(let member of members){%>
                 <li>
                     <a href="/members/<%=member.roll_no%>">
                         <h3><%=member.first_name%> <%=member.last_name%></h3>
                     </a>
                 </li>
             <%}%>
+            <li>
+                <a href="/members/add"><h3>Add New</h3></a>
+            </li>
+            <%}%>
         </ul>
-        <%}%>
     </main>
 </body>
 </html>
