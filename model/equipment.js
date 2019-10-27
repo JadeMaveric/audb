@@ -3,14 +3,7 @@ const db = require('../data/database');
 module.exports = class Equipment{
     constructor(){}
     static number(){
-        var x;
-         db.execute('SELECT COUNT(id) AS id FROM equipment')
-        .then(([rows])=>{setVal(rows[0].id)}).catch(err=>console.log(err));
-        function setVal(val){
-            x=val;
-            //console.log(x)
-        }
-        return x;
+        return db.execute('SELECT COUNT(id) AS total FROM equipment');
     }
     static fetchAll(){
         let result = db.execute('SELECT * FROM equipment');

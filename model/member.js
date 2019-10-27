@@ -3,7 +3,7 @@ const db = require('../data/database');
 module.exports = class Member{
     constructor(){}
     static number(){
-        return db.execute('SELECT COUNT(roll_no) AS r FROM members');
+        return db.execute('SELECT COUNT(roll_no) AS total FROM members');
     }
     static fetchAll(){
         return db.execute('SELECT * FROM members');

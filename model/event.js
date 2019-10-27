@@ -1,7 +1,10 @@
 const db = require('../data/database');
 
 module.exports = class Event{
-    constructor(){}
+    constructor() {}
+    static number(){
+        return db.execute('SELECT COUNT(id) as total FROM events');
+    }
     static title(){
         return db.execute('SELECT name AS t FROM events where date =(SELECT MAX(date) FROM events) ');
     }
