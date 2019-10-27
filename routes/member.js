@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 
-router.get('/members',memberController.getMembers);
+router.get('/members',memberController.getAllMembers);
 router.get('/members/:id',memberController.getMember)
 
 module.exports =router 

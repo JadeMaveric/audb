@@ -1,10 +1,11 @@
 const Member = require('../model/member');
 
-exports.getMembers=(req,res,next)=>{
+exports.getAllMembers=(req,res,next)=>{
     Member.fetchAll()
     .then(([rows,fieldData])=>{
+        console.log(rows);
         res.render('member-list',{
-            members:rows
+            members: rows
         })
     })
 }
@@ -14,7 +15,7 @@ exports.getMember =(req,res,next)=>{
     .then(([members])=>
         {
             res.render('member-details',{
-                member:members[0]
+                member: members[0]
             })
         }).catch(err=>console.log(err))
 
