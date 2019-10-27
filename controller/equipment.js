@@ -1,10 +1,10 @@
 const Eq = require('../model/equipment');
 
-exports.getEquipments=(req,res,next)=>{
+exports.getAllEquipment=(req,res,next)=>{
     Eq.fetchAll()
     .then(([rows])=>{
         res.render('equipment-list',{
-            equipments:rows
+            equipments: rows
         })
     })
     .catch(err=>console.log(err));
@@ -16,8 +16,8 @@ exports.getEquipment =(req,res,next)=>{
     .then(([rows])=>
         {
             console.log(rows[0]);
-            res.render('equipment-details',{
-                event:rows[0]
+            res.render('equipment-details', {
+                equipment: rows[0]
             })
         }).catch(err=>console.log(err))
 }

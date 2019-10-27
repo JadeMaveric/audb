@@ -13,7 +13,9 @@ module.exports = class Equipment{
         return x;
     }
     static fetchAll(){
-        return db.execute('SELECT * FROM equipment')
+        let result = db.execute('SELECT * FROM equipment');
+        console.log(result);
+        return result;
     }
     static fetchById(id){
         //return db.execute('SELECT * FROM euipment,supplier WHERE equipment.id= ? AND equipment.id=supplier.eqid',[id]);
