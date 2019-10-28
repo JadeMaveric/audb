@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>member-list</title>
 </head>
+
 <body>
     <main>
         <ul>
             <%if(members.length > 0) {%>
-            <%for(let member of members){%>
-                <li>
-                    <a href="/members/<%=member.roll_no%>">
-                        <h3><%=member.first_name%> <%=member.last_name%></h3>
-                    </a>
-                </li>
-            <%}%>
-            <li>
-                <a href="/members/add"><h3>Add New</h3></a>
-            </li>
-            <%}%>
+                <%for(let member of members){%>
+                    <li>
+                        <a href="/members/<%=member.roll_no%>">
+                            <h3>
+                                <%=member.first_name%>
+                                    <%=member.last_name%>
+                            </h3>
+                        </a>
+                    </li>
+                    <%}%>
+                        <%}%>
+                            <li>
+                                <a href="/members/add">
+                                    <h3>Add New</h3>
+                                </a>
+                            </li>
         </ul>
     </main>
 </body>
+
 </html>

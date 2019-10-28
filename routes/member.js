@@ -1,6 +1,7 @@
 const express = require('express');
 const memberController = require('../controller/member');
 const { check, validationResult } = require('express-validator');
+const Member = require('../model/member');
 const db = require('../data/database')
 
 const router = express.Router();
@@ -39,30 +40,23 @@ router.post('/members/add', (req, res, next) => {
 })
 
 // SHOW EDIT USER FORM
-router.get('members/edit/(:id)', function (req, res, next) {
-    console.log("Requsting used id ", req.params.id)
-    connection.query('SELECT * FROM members WHERE id = ?', req.params.id).then( (err, rows, fields) => {
-        if (err) throw err
-
-        // if user not found
-        if (rows.length <= 0) {
-            res.redirect('/members')
-        }
-        else { // if user found
+router.get('/members/edit/:id', (req, res, next) => {
+    //console.log("Editing user ", req.params);
+    Member.fetchById(req.params.id)
+        .then(([rows]) => {
+            console.log(rows[0]);
             res.render('members-edit', {
-                title: 'Edit Customer',
+                title: 'Edit Member',
                 first_name: rows[0].first_name,
                 last_name: rows[0].last_name,
                 roll_no: rows[0].roll_no,
                 instrument: rows[0].instrument
             })
-        }
-    })
-
+        })
 })
 
 // EDIT USER POST ACTION
-router.post('members/update/:id', function (req, res, next) {
+router.post('/members/update/:id', (req, res, next) => {
     console.log(req['body']);
 
     var member = {
@@ -71,10 +65,17 @@ router.post('members/update/:id', function (req, res, next) {
         roll_no: req['body'].roll_no,
         instrument: req['body'].instrument || "None"
     }
-
-    connection.query('UPDATE members SET ? WHERE id = ' + req.params.id, user).then( (err, result) => {
-        res.redirect('/customers');
+    console.log("Received info", member);
+    db.query('UPDATE members SET ? WHERE roll_no = ' + req.params.id, member).then((err, result) => {
+        res.redirect(`/members/${member.roll_no}`);
     })
+})
+router.get('/members/delete/:id', (req, res, next) => {
+    console.log("Deleting", req['body']);
+    db.query('DELETE FROM members WHERE roll_no = ?', req.params.id)
+        .then(
+            (err, results) => res.redirect('/members')
+        )
 })
 
 router.get('/members/:id', memberController.getMember);
