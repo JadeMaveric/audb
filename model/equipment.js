@@ -12,7 +12,7 @@ module.exports = class Equipment{
     }
     static fetchById(id){
         //return db.execute('SELECT * FROM euipment,supplier WHERE equipment.id= ? AND equipment.id=supplier.eqid',[id]);
-        return db.execute('SELECT * FROM equipment');
+        return db.execute('SELECT * FROM equipment WHERE equipment.id = ?', [id]);
     }
 };
 

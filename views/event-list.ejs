@@ -10,9 +10,13 @@
     <main>
         <%if(events.length>0){%>
         <ul><%for(let event of events){%>
-                <li><a href="/events/<%=event.id%>"><h3><%=event.name%><%=event.id%>
-                                                            </h3></a></li>
+                <li><a href="/events/<%=event.id%>">
+                    <h3><%=event.name%><%=event.id%></h3>
+                </a></li>
             <%}%>
+            <li>
+                <a href="/events/add"><h3>Add New</h3></a>
+            </li>
         </ul>
         <%}%>
     </main>
