@@ -30,6 +30,13 @@
         </div>
         <input type="submit" class="btn btn-primary" value="Add">
     </form>
+    <%if(err){%>
+        <%for (var e in err){%>
+            <h4>
+                <%=err[e].msg%>
+            </h4>
+            <%}%>
+                <%}%>
 </body>
 
 </html>

@@ -13,8 +13,9 @@ exports.getEvent = (req, res, next) => {
     const id = req.params.id;
     Event.fetchById(id)
         .then(([rows]) => {
+            console.log(rows);
             res.render('event-details', {
-                event: rows[0]
+                event: rows
             })
         }).catch(err => console.log(err))
 }

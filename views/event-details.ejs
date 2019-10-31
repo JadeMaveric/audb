@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><%=event.name%></title>
+    <title>
+        <%=event[0].name%>
+    </title>
 </head>
+
 <body>
-    <h2><%=event.name%></h2>
-    <h4><%=event.date%></h4>
-    <h4><%=event.attendeeno%></h4>
-    <p><%=event.report%></p>
+
+    <h2>
+        <%=event[0].name%>
+    </h2>
+    <h4>
+        <%=event[0].date%>
+    </h4>
+    <h4>
+        <%=event[0].attendeeno%>
+    </h4>
+    <p>
+        <%=event[0].report%>
+    </p>
+    <h4>
+        Attendees
+    </h4>
+    <%for(let e of event){%>
+        <h6>
+            <%=e.first_name%>
+                <%=e.last_name%>
+        </h6>
+        <%}%>
 </body>
+
 </html>

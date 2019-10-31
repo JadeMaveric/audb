@@ -2,7 +2,9 @@
 <html>
 
 <head>
-    <title>Customers</title>
+    <title>
+        <%=title%>
+    </title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
@@ -27,6 +29,13 @@
 
         <input type="submit" class="btn btn-primary" value="Add">
     </form>
+    <%if(err){%>
+        <%for (var e in err){%>
+            <h4>
+                <%=err[e].msg%>
+            </h4>
+            <%}%>
+                <%}%>
 </body>
 
 </html>
