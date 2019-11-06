@@ -15,4 +15,7 @@ module.exports = class Member {
         var c = 'null'
         return db.execute('SELECT * FROM members WHERE members.instrument != ?', [c])
     }
+    static getByInstrument(instrument) {
+        return db.execute('SELECT * FROM members WHERE members.instrument = ?', [instrument])
+    }
 };

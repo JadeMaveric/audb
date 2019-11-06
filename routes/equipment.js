@@ -55,6 +55,8 @@ router.post('/equipments/add', [
     }
 })
 
+router.post('/equipments/search/by-supp', EquipmentController.getBySupplier)
+
 router.get('/equipments/:eid', EquipmentController.getEquipment)
 
 module.exports = router;

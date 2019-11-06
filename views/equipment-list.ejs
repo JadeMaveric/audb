@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>equipment-list</title>
 </head>
+
 <body>
     <main>
+        <form action="/equipments/search/by-supp" method="POST">
+            <input type="text" class="form-control" name="name" id="supplier" value="" placeholder="Supplier Name">
+
+            <input type="submit" class="btn btn-primary" value="Search">
+        </form>
         <%if(equipments.length>0){%>
-        <ul><%for(let e of equipments){%>
-                <li><a href="/equipments/<%=e.id%>"><h3><%=e.type%></h3></a></li>
+            <ul>
+                <%for(let e of equipments){%>
+                    <li>
+                        <a href="/equipments/<%=e.id%>">
+                            <h3>
+                                <%=e.type%>
+                            </h3>
+                        </a>
+                    </li>
+                    <%}%>
+                        <li>
+                            <a href="/equipments/add">
+                                <h3>Add New</h3>
+                            </a>
+                        </li>
+            </ul>
             <%}%>
-            <li>
-                <a href="/equipments/add"><h3>Add New</h3></a>
-            </li>
-        </ul>
-        <%}%>
     </main>
 </body>
+
 </html>

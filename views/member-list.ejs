@@ -10,6 +10,11 @@
 
 <body>
     <main>
+        <form action="/members/search/by-instrument" method="POST">
+            <input type="text" class="form-control" name="instrument" id="instrument" value="" placeholder="Enter the instrument">
+
+            <input type="submit" class="btn btn-primary" value="Search">
+        </form>
         <ul>
             <%if(members.length > 0) {%>
                 <%for(let member of members){%>

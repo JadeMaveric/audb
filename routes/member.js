@@ -115,6 +115,6 @@ router.get('/members/delete/:id', (req, res, next) => {
         )
 })
 
-router.get('/members/:id', memberController.getMember);
-
+//search by insturment
+router.post('/members/search/by-instrument', memberController.getByInstument);
 module.exports = router;

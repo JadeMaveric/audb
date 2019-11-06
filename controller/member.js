@@ -28,3 +28,12 @@ exports.getMusicians = (req, res) => {
         })
         .catch(err => console.log(err))
 }
+exports.getByInstument = (req, res) => {
+    Member.getByInstrument(req.body.instrument)
+        .then(([rows]) => {
+            res.render('musicians', {
+                members: rows
+            })
+        })
+
+}
